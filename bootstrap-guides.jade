@@ -1,10 +1,17 @@
 template(name="bootstrapGuides")
   #bsg-layer
     .bsg-ui
-      button#bsg-fluid-button.btn.btn-default container
-      input.bsg-quick-div(value='1')
-      button#bsg-hide-button.btn.btn-primary hide
-    #bsg-container-type.container.bsg-overlay
-      .row.bsg-row-guide
-        each qcolumns
-          .bsg-col-guide.bsg-vertical-guide(class='{{qcolumnClass this}}')
+      .bsg-container-type.container
+        .row.bsg-row-guide
+          .bsg-col-guide(class='{{uiClass}}')
+            .well
+              .text-center
+                h5 VERTICAL GUIDES
+                input.bsg-quick-div(value='2')
+                button#bsg-fluid-button.btn.btn-default container
+                button#bsg-hide-button.btn.btn-primary hide
+    .bsg-overlay
+      .bsg-container-type.container
+        .row.bsg-row-guide
+          each qcolumns
+            .bsg-col-guide.bsg-vertical-guide(class='{{qcolumnClass this}}')

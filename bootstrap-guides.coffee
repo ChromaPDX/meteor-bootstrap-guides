@@ -10,7 +10,7 @@ toggledisplay = (elementID) ->
 
 $(document).ready ->
   console.log('ctl+g to show bootstrap guides')
-  Session.set('qcolumns', 1)
+  Session.set('qcolumns', 2)
   $(document).keydown (e) ->
     if e.ctrlKey
       if e.keyCode == 71        # 'g'
@@ -32,6 +32,8 @@ evenGrids = [
     [1,1,1,1,1,1,1,1,1,1,1,1]
   ]
 
+uiWidth = [12,6,6,4,3,5,6,7,8,9,10,11,12]
+
 Template.bootstrapGuides.events
   'keyup .bsg-quick-div': (e,t) ->
     $input = $('.bsg-quick-div')
@@ -40,7 +42,7 @@ Template.bootstrapGuides.events
       Session.set('qcolumns', qcolumns)
 
   'click #bsg-fluid-button': (e,t) ->
-    $('#bsg-container-type').toggleClass 'container container-fluid'
+    $('.bsg-container-type').toggleClass 'container container-fluid'
     $btn = $('#bsg-fluid-button')
     if $btn.text() == 'container'
       $btn.text 'container-fluid'
@@ -52,6 +54,14 @@ Template.bootstrapGuides.events
     toggledisplay()
 
 Template.bootstrapGuides.helpers
+  uiClass: ->
+    qcolumns = Session.get('qcolumns') || 2
+    size = uiWidth[qcolumns]
+    cssClass = ''
+    _.each(['col-lg-','col-xs-'], (wClass)->
+      cssClass += wClass + size + ' ';
+    )
+    return cssClass
   qcolumnClass: (size) ->
     cssClass = ''
     _.each(['col-lg-','col-xs-'], (wClass)->
@@ -59,5 +69,5 @@ Template.bootstrapGuides.helpers
     )
     return cssClass
   qcolumns: ->
-    qcolumns = Session.get('qcolumns') || 1
+    qcolumns = Session.get('qcolumns') || 2
     return evenGrids[qcolumns]

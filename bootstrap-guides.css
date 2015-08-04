@@ -7,16 +7,15 @@
   position:absolute;
   top:0;
   left:0;
+  right:0;
+  z-index: 9999999996;
 }
 
-.bsg-ui {
-  z-index: 9999999997;
+.bsg-bg {
+  background-color: rgba(255,255,255,.3) !important;
 }
 
 .bsg-overlay {
-  bottom:0;
-  right:0;
-  z-index: 9999999996;
   pointer-events: none;
 }
 
