@@ -1,20 +1,5 @@
-.bsg-vertical-guide {
-  height: 100vh;
-}
-
-.bsg-vertical-guide:first-child {
-  border-left: solid 1px #f0f;
-  border-right: solid 1px #f0f;
-}
-
-.bsg-vertical-guide:not(first-child) {
-  border-left: 0;
-  border-right: solid 1px #f0f;
-}
-
-.bsg-quick-div {
-  max-width: 50px;
-  color: #f0f;
+#bsg-layer {
+  display: none;
 }
 
 .bsg-overlay, .bsg-ui{
@@ -33,4 +18,23 @@
   right:0;
   z-index: 9999999996;
   pointer-events: none;
+}
+
+.bsg-vertical-guide {
+  height: 100vh;
+}
+
+.bsg-vertical-guide:first-child {
+  border-left: solid 1px #f0f;
+  border-right: solid 1px #f0f;
+}
+
+.bsg-vertical-guide:not(first-child) {
+  border-left: 0;
+  border-right: solid 1px #f0f;
+}
+
+.bsg-quick-div {
+  max-width: 50px;
+  color: #f0f;
 }

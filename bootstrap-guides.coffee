@@ -1,14 +1,12 @@
-qcolumns = 3
-
 toggledisplay = (elementID) ->
   ((style) ->
-    style.display = if style.display == 'none' then '' else 'none'
-    return
-  ) document.getElementById(elementID).style
-  return
+    style.display = if style.display == 'block' then 'none' else 'block'
+  )(document.getElementById("bsg-layer").style)
 
-toggleGuides = ->
-  toggledisplay('bsg-layer')
+# toggleGuides = ->
+#   $elem = $("#bsg-layer")
+#   $elem.css("display", $elem.css("display") == 'none' ? '' : 'none')
+#   console.log('toggle guides: ', $elem.css("display"))
 
 $(document).ready ->
   console.log('ctl+g to show bootstrap guides')
@@ -16,7 +14,7 @@ $(document).ready ->
   $(document).keydown (e) ->
     if e.ctrlKey
       if e.keyCode == 71        # 'g'
-        toggleGuides()
+        toggledisplay()
 
 evenGrids = [
     [12],
@@ -51,7 +49,7 @@ Template.bootstrapGuides.events
     return
 
   'click #bsg-hide-button': (e,t) ->
-    toggleGuides()
+    toggledisplay()
 
 Template.bootstrapGuides.helpers
   qcolumnClass: (size) ->
@@ -59,7 +57,6 @@ Template.bootstrapGuides.helpers
     _.each(['col-lg-','col-xs-'], (wClass)->
       cssClass += wClass + size + ' ';
     )
-    console.log('set col class', cssClass)
     return cssClass
   qcolumns: ->
     qcolumns = Session.get('qcolumns') || 1
