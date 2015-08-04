@@ -1,0 +1,19 @@
+.vertical-guide {
+  border-left: solid 1px #f0f;
+  border-right: solid 1px #f0f;
+  height: 4096px;
+}
+
+.bsg-quick-div {
+  max-width: 50px;
+  color: #f0f;
+}
+
+.guide-fill {
+
+}
+
+.guide-off {
+  hidden: true;
+  height: 0px;
+}
