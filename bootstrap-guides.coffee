@@ -32,7 +32,7 @@ evenGrids = [
     [1,1,1,1,1,1,1,1,1,1,1,1]
   ]
 
-uiWidth = [12,6,6,4,3,5,6,7,8,9,10,11,12]
+uiWidth = [12,12,6,4,3,5,6,7,8,9,10,11,12]
 
 Template.bootstrapGuides.events
   'keyup .bsg-quick-div': (e,t) ->
