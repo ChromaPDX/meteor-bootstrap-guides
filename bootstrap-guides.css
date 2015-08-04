@@ -1,7 +1,15 @@
-.vertical-guide {
+.bsg-vertical-guide {
+  height: 100vh;
+}
+
+.bsg-vertical-guide:first-child {
   border-left: solid 1px #f0f;
   border-right: solid 1px #f0f;
-  height: 4096px;
+}
+
+.bsg-vertical-guide:not(first-child) {
+  border-left: 0;
+  border-right: solid 1px #f0f;
 }
 
 .bsg-quick-div {
@@ -9,11 +17,20 @@
   color: #f0f;
 }
 
-.guide-fill {
-
+.bsg-overlay, .bsg-ui{
+  position:fixed !important;
+  position:absolute;
+  top:0;
+  left:0;
 }
 
-.guide-off {
-  hidden: true;
-  height: 0px;
+.bsg-ui {
+  z-index: 9999999997;
+}
+
+.bsg-overlay {
+  bottom:0;
+  right:0;
+  z-index: 9999999996;
+  pointer-events: none;
 }

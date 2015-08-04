@@ -12,10 +12,18 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.use('mquandalle:jade');
-  api.addFiles('bootstrap-guides.coffee');
-  api.addFiles('bootstrap-guides.css');
-  api.addFiles('bootstrap-guides.jade');
+  api.use([
+    "jquery",
+    "coffeescript",
+    "templating",
+    "mquandalle:jade@0.4.3"
+], "client");
+
+  api.addFiles([
+    'bootstrap-guides.jade',
+    'bootstrap-guides.css',
+    'bootstrap-guides.coffee'
+	], 'client');
 });
 
 Package.onTest(function(api) {
