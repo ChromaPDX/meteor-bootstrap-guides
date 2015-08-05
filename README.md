@@ -14,16 +14,21 @@ meteor add chroma:bootstrap-guides
 
 ## Usage
 
-add template named 'bootstrapGuides' somewhere in html
+1. add template named 'bootstrapGuides' somewhere in html (I put it in iron router / layout template)
 
+```html
+{{> bootstrapGuides}}
+```
 
 ```jade
 +bootstrapGuides
 ```
 
-```html
-{{< bootstrapGuides}}
-```
+2. press ctl+g to toggle visibility
+
+## Example
+
+
 
 ## Version history
 
