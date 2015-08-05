@@ -1,12 +1,27 @@
-toggledisplay = (elementID) ->
+state = 'neither'
+
+toggleAll = ->
   ((style) ->
     style.display = if style.display == 'block' then 'none' else 'block'
   )(document.getElementById("bsg-layer").style)
 
-# toggleGuides = ->
-#   $elem = $("#bsg-layer")
-#   $elem.css("display", $elem.css("display") == 'none' ? '' : 'none')
-#   console.log('toggle guides: ', $elem.css("display"))
+toggleUI = ->
+  ((style) ->
+    style.display = if style.display == 'none' then 'block' else 'none'
+  )(document.getElementById("bsg-ui").style)
+
+toggledisplay = () ->
+  switch (state)
+    when 'neither'
+      toggleAll()
+      state = 'both'
+    when 'both'
+      toggleUI()
+      state = 'guides'
+    when 'guides'
+      toggleAll()
+      toggleUI()
+      state = 'neither'
 
 $(document).ready ->
   console.log('ctl+g to show bootstrap guides')

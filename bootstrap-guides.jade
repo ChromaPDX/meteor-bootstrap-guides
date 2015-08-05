@@ -1,15 +1,15 @@
 template(name="bootstrapGuides")
   #bsg-layer
-    .bsg-ui
+    #bsg-ui.bsg-ui
       .bsg-container-type.container
         .row.bsg-row-guide
           .bsg-col-guide(class='{{uiClass}}')
             .well
               .text-center
-                h5 VERTICAL GUIDES
+                | VERTICAL GUIDES
                 input.bsg-quick-div(value='2')
-                button#bsg-fluid-button.btn.btn-default container
-                button#bsg-hide-button.btn.btn-primary hide
+                button#bsg-fluid-button.btn.btn-xs.btn-primary container
+                button#bsg-hide-button.btn.btn-xs.btn-warning hide
     .bsg-overlay
       .bsg-container-type.container
         .row.bsg-row-guide
