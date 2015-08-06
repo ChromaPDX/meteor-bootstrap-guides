@@ -10,6 +10,17 @@ toggleUI = ->
     style.display = if style.display == 'none' then 'block' else 'none'
   )(document.getElementById("bsg-ui").style)
 
+togglePadding = ->
+  Session.set('bsg-show-padding', 1 - (Session.get('bsg-show-padding') || 0))
+
+adjustMargin = (margin) ->
+  _.each(document.getElementsByClassName("bsg-col-guide"), (elem)->
+    ((style) ->
+      style['margin-left'] = margin + 'px'
+      style['margin-right'] = margin + 'px'
+    )(elem.style)
+  )
+
 toggledisplay = () ->
   switch (state)
     when 'neither'
@@ -25,7 +36,7 @@ toggledisplay = () ->
 
 $(document).ready ->
   console.log('ctl+g to show bootstrap guides')
-  Session.set('qcolumns', 2)
+  Session.set('bsg-qcolumns', 2)
   $(document).keydown (e) ->
     if e.ctrlKey
       if e.keyCode == 71        # 'g'
@@ -54,7 +65,13 @@ Template.bootstrapGuides.events
     $input = $('.bsg-quick-div')
     qcolumns = parseInt($input.val())
     if qcolumns <= 12 && qcolumns > 0
-      Session.set('qcolumns', qcolumns)
+      Session.set('bsg-qcolumns', qcolumns)
+
+  'keyup .bsg-quick-margin': (e,t) ->
+    $input = $('.bsg-quick-margin')
+    margin = parseInt($input.val())
+    if margin <= 1024 && margin > -1024
+      adjustMargin(margin)
 
   'click #bsg-fluid-button': (e,t) ->
     $('.bsg-container-type').toggleClass 'container container-fluid'
@@ -65,12 +82,17 @@ Template.bootstrapGuides.events
       $btn.text 'container'
     return
 
+  'click #bsg-padding-button': (e,t) ->
+    togglePadding()
+
   'click #bsg-hide-button': (e,t) ->
     toggledisplay()
 
 Template.bootstrapGuides.helpers
+  showPadding: ->
+    return Session.get('bsg-show-padding')
   uiClass: ->
-    qcolumns = Session.get('qcolumns') || 2
+    qcolumns = Session.get('bsg-qcolumns') || 2
     size = uiWidth[qcolumns]
     cssClass = ''
     _.each(['col-lg-','col-xs-'], (wClass)->
@@ -84,5 +106,5 @@ Template.bootstrapGuides.helpers
     )
     return cssClass
   qcolumns: ->
-    qcolumns = Session.get('qcolumns') || 2
+    qcolumns = Session.get('bsg-qcolumns') || 2
     return evenGrids[qcolumns]

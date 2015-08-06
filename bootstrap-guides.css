@@ -43,7 +43,13 @@
   border-right: solid 1px #f0f;
 }
 
-.bsg-quick-div {
+.bsg-padding-guide {
+  border-left: solid 1px #0ff;
+  border-right: solid 1px #0ff;
+  height: 100vh;
+}
+
+.bsg-quick-div,.bsg-quick-margin {
   max-width: 50px;
   color: #f0f;
 }

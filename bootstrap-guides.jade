@@ -8,10 +8,15 @@ template(name="bootstrapGuides")
               .text-center
                 | VERTICAL GUIDES
                 input.bsg-quick-div(value='2')
+                | adjust
+                input.bsg-quick-margin(value='0')
                 button#bsg-fluid-button.btn.btn-xs.btn-primary container
+                button#bsg-padding-button.btn.btn-xs.btn-primary padding
                 button#bsg-hide-button.btn.btn-xs.btn-warning hide
     .bsg-overlay
       .bsg-container-type.container
         .row.bsg-row-guide
           each qcolumns
             .bsg-col-guide.bsg-vertical-guide(class='{{qcolumnClass this}}')
+              if showPadding
+                .bsg-padding-guide
