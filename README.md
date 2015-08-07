@@ -7,7 +7,7 @@ This is a simple debugging tool, useful for checking gutters.
 
 press *ctl+g* to reveal magenta vertical guides along various bootstrap column breaks, a la illustrator etc.
 
-![](https://raw.githubusercontent.com/ChromaPDX/meteor-bootstrap-guides/screenshots/img/2columns.png)
+![](https://raw.githubusercontent.com/ChromaPDX/meteor-bootstrap-guides/screenshots/img/3columns.png)
 
 ## Example
 
