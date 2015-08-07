@@ -1,9 +1,10 @@
 Package.describe({
   name: 'chroma:bootstrap-guides',
-  version: '0.0.2',
+  version: '0.0.3',
   summary: 'press ctl+g to reveal bootstap vertical column guides',
   git: 'https://github.com/ChromaPDX/meteor-bootstrap-guides',
-  documentation: 'README.md'
+  documentation: 'README.md',
+  debugOnly: true
 });
 
 Package.on_use(function(api) {

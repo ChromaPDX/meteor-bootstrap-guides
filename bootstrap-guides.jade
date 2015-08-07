@@ -1,22 +1,36 @@
+body
+  +bootstrapGuides
+  
 template(name="bootstrapGuides")
   #bsg-layer
     #bsg-ui.bsg-ui
       .bsg-container-type.container
         .row.bsg-row-guide
-          .bsg-col-guide(class='{{uiClass}}')
+          .bsg-col-guide(class='{{uiClass}}' style='padding-left:{{paddingAdjust}}px; padding-right:{{paddingAdjust}}px;')
             .well
-              .text-center
-                | VERTICAL GUIDES
-                input.bsg-quick-div(value='2')
-                | adjust
-                input.bsg-quick-margin(value='0')
-                button#bsg-fluid-button.btn.btn-xs.btn-primary container
-                button#bsg-padding-button.btn.btn-xs.btn-primary padding
-                button#bsg-hide-button.btn.btn-xs.btn-warning hide
+              .row
+                .col-sm-6
+                  .row.col-sm-12
+                    input.bsg-input.bsg-quick-div(value='2')
+                    |columns
+                  .row.col-sm-12
+                    input.bsg-input.bsg-quick-margin(value='0')
+                    |adjust margins
+                  .row.col-sm-12
+                    input.bsg-input.bsg-quick-padding(value='15')
+                    |adjust padding 
+                .col-sm-6 
+                  .row.col-sm-12
+                    button#bsg-fluid-button.btn.btn-xs.btn-primary container
+                  .row.col-sm-12
+                    button#bsg-padding-button.btn.btn-xs.btn-primary show padding
+                  .row.col-sm-12
+                    button#bsg-hide-button.btn.btn-xs.btn-warning hide
+                  
     .bsg-overlay
       .bsg-container-type.container
         .row.bsg-row-guide
           each qcolumns
-            .bsg-col-guide.bsg-vertical-guide(class='{{qcolumnClass this}}')
+            .bsg-col-guide.bsg-vertical-guide(class='{{qcolumnClass this}}' style="padding-left:{{paddingAdjust}}px; padding-right:{{paddingAdjust}}px;")
               if showPadding
                 .bsg-padding-guide

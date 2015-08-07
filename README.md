@@ -1,10 +1,17 @@
 # Bootstrap Guides
 
-This is a simple debugging tool, useful for checking gutters if you're nesting templates.
+This is a simple debugging tool, useful for checking gutters.
+
+1. if you're nesting templates and want to make sure you're not inheriting too many row divs etc.
+2. if you're trying to line up non bootstrap elements against the bootstrap grid
 
 press *ctl+g* to reveal magenta vertical guides along various bootstrap column breaks, a la illustrator etc.
 
 ![](https://raw.githubusercontent.com/ChromaPDX/meteor-bootstrap-guides/screenshots/img/2columns.png)
+
+## Example
+
+http://meteorpad.com/pad/v4HnDcwAarAxrAQtn/chroma:bootstrap-guides
 
 ## Installation
 
@@ -18,20 +25,11 @@ meteor add chroma:bootstrap-guides
 
 ## Usage
 
-1. add template named 'bootstrapGuides' somewhere in html (I put it in iron router / layout template)
-
-```html
-{{> bootstrapGuides}}
-```
-
-```jade
-+bootstrapGuides
-```
-
-2. press ctl+g to toggle visibility
+press ctl+g to bring up overlay
 
 ## Version history
 
+- `0.0.3` - Package adds template to body, debugOnly: true      
 - `0.0.1` - Initial publish.
 
 ## Contributing

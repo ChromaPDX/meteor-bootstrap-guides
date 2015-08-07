@@ -49,7 +49,13 @@
   height: 100vh;
 }
 
-.bsg-quick-div,.bsg-quick-margin {
+.bsg-input {
   max-width: 50px;
+}
+.bsg-quick-div,.bsg-quick-margin {
   color: #f0f;
+}
+
+.bsg-quick-padding {
+  color: #0ff;
 }

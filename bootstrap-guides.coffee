@@ -13,13 +13,15 @@ toggleUI = ->
 togglePadding = ->
   Session.set('bsg-show-padding', 1 - (Session.get('bsg-show-padding') || 0))
 
-adjustMargin = (margin) ->
-  _.each(document.getElementsByClassName("bsg-col-guide"), (elem)->
-    ((style) ->
-      style['margin-left'] = margin + 'px'
-      style['margin-right'] = margin + 'px'
-    )(elem.style)
-  )
+adjustMargin = (left,right) ->
+  ((style) ->
+    style['left'] = left + 'px'
+    style['right'] = right + 'px'
+  )(document.getElementsByClassName("bsg-overlay")[0].style)
+  ((style) ->
+    style['left'] = left + 'px'
+    style['right'] = right + 'px'
+  )(document.getElementsByClassName("bsg-ui")[0].style)
 
 toggledisplay = () ->
   switch (state)
@@ -37,6 +39,7 @@ toggledisplay = () ->
 $(document).ready ->
   console.log('ctl+g to show bootstrap guides')
   Session.set('bsg-qcolumns', 2)
+  Session.set('bsg-padding-adjust', 15)
   $(document).keydown (e) ->
     if e.ctrlKey
       if e.keyCode == 71        # 'g'
@@ -58,7 +61,7 @@ evenGrids = [
     [1,1,1,1,1,1,1,1,1,1,1,1]
   ]
 
-uiWidth = [12,12,6,4,3,5,6,7,8,9,10,11,12]
+uiWidth = [6,6,6,4,3,5,6,7,8,9,10,11,12]
 
 Template.bootstrapGuides.events
   'keyup .bsg-quick-div': (e,t) ->
@@ -70,8 +73,14 @@ Template.bootstrapGuides.events
   'keyup .bsg-quick-margin': (e,t) ->
     $input = $('.bsg-quick-margin')
     margin = parseInt($input.val())
-    if margin <= 1024 && margin > -1024
-      adjustMargin(margin)
+    if margin <= 768 && margin > 0
+      adjustMargin(margin,margin)
+
+  'keyup .bsg-quick-padding': (e,t) ->
+    $input = $('.bsg-quick-padding')
+    padding = parseInt($input.val())
+    if (padding <= 768 && padding > -768)
+      Session.set('bsg-padding-adjust', padding)
 
   'click #bsg-fluid-button': (e,t) ->
     $('.bsg-container-type').toggleClass 'container container-fluid'
@@ -87,10 +96,13 @@ Template.bootstrapGuides.events
 
   'click #bsg-hide-button': (e,t) ->
     toggledisplay()
+    toggledisplay()
 
 Template.bootstrapGuides.helpers
   showPadding: ->
     return Session.get('bsg-show-padding')
+  paddingAdjust: ->
+    return Session.get('bsg-padding-adjust')
   uiClass: ->
     qcolumns = Session.get('bsg-qcolumns') || 2
     size = uiWidth[qcolumns]
